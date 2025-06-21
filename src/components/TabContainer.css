@@ -1,0 +1,136 @@
+.tab-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.tab-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 0;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.tab-list {
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  min-height: 60px;
+}
+
+.tab-list::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #666;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.tab-button:hover:not(.disabled) {
+  background-color: #e9ecef;
+  color: #333;
+}
+
+.tab-button.active {
+  color: #007acc;
+  border-bottom-color: #007acc;
+  background-color: #fff;
+}
+
+.tab-button.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.tab-icon {
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.tab-label {
+  font-weight: inherit;
+}
+
+.tab-content {
+  flex: 1;
+  overflow: auto;
+  background-color: #fff;
+  min-height: 0;
+  position: relative;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tab-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  .tab-label {
+    display: none;
+  }
+
+  .tab-button {
+    min-width: 60px;
+    justify-content: center;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .tab-container {
+    background-color: #1a1a1a;
+  }
+
+  .tab-header {
+    background-color: #2d2d2d;
+    border-bottom-color: #404040;
+  }
+
+  .tab-button {
+    color: #aaa;
+  }
+
+  .tab-button:hover:not(.disabled) {
+    background-color: #404040;
+    color: #e0e0e0;
+  }
+
+  .tab-button.active {
+    color: #4a9eff;
+    border-bottom-color: #4a9eff;
+    background-color: #1a1a1a;
+  }
+
+  .tab-button.disabled {
+    color: #666;
+  }
+
+  .tab-content {
+    background-color: #1a1a1a;
+  }
+}

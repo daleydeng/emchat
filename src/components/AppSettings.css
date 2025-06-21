@@ -1,0 +1,289 @@
+.app-settings {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border-color);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.settings-header h3 {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.settings-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.settings-actions button {
+  padding: 8px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.settings-actions button:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+}
+
+.settings-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.save-button:not(:disabled) {
+  background: var(--success-color);
+  color: white;
+  border-color: var(--success-color);
+}
+
+.reset-button {
+  background: var(--warning-color);
+  color: white;
+  border-color: var(--warning-color);
+}
+
+.reload-button {
+  background: var(--info-color);
+  color: white;
+  border-color: var(--info-color);
+}
+
+.validation-errors {
+  background: var(--error-bg);
+  border: 1px solid var(--error-color);
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.validation-errors h4 {
+  margin: 0 0 10px 0;
+  color: var(--error-color);
+}
+
+.validation-errors ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validation-errors li {
+  color: var(--error-color);
+  margin-bottom: 5px;
+}
+
+.settings-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.settings-section h4 {
+  margin: 0 0 15px 0;
+  color: var(--text-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.setting-field {
+  margin-bottom: 15px;
+}
+
+.setting-field label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.setting-field input[type="text"],
+.setting-field input[type="number"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.setting-field input[type="text"]:focus,
+.setting-field input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(var(--primary-color-rgb), 0.2);
+}
+
+.setting-field input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+
+.setting-field label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.setting-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.unsaved-changes-notice {
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-color);
+  border-radius: 6px;
+  padding: 12px;
+  color: var(--warning-color);
+  text-align: center;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-settings {
+    padding: 15px;
+  }
+
+  .settings-header {
+    flex-direction: column;
+    gap: 15px;
+    align-items: stretch;
+  }
+
+  .settings-actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .settings-actions button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .setting-row {
+    grid-template-columns: 1fr;
+  }
+
+  .settings-section {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-settings {
+    padding: 10px;
+  }
+
+  .settings-header h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .settings-actions {
+    flex-direction: column;
+  }
+
+  .settings-actions button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .settings-section {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .settings-section h4 {
+    font-size: 1rem;
+  }
+
+  .setting-field input[type="text"],
+  .setting-field input[type="number"] {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+@media (max-width: 320px) {
+  .app-settings {
+    padding: 5px;
+  }
+
+  .settings-header {
+    margin-bottom: 15px;
+  }
+
+  .settings-section {
+    padding: 8px;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .app-settings {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-hover: #3d3d3d;
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #404040;
+    --border-hover: #606060;
+    --primary-color: #0ea5e9;
+    --primary-color-rgb: 14, 165, 233;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --warning-bg: rgba(245, 158, 11, 0.1);
+    --error-color: #ef4444;
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --info-color: #6366f1;
+  }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .app-settings {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-hover: #f1f5f9;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border-color: #d1d5db;
+    --border-hover: #9ca3af;
+    --primary-color: #0ea5e9;
+    --primary-color-rgb: 14, 165, 233;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --warning-bg: rgba(245, 158, 11, 0.1);
+    --error-color: #ef4444;
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --info-color: #6366f1;
+  }
+}

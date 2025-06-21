@@ -1,0 +1,119 @@
+.chat-input-form {
+  padding: 1rem;
+  border-top: 1px solid #e0e0e0;
+  background-color: #fff;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: border-color 0.2s ease;
+}
+
+.chat-input-container:focus-within {
+  border-color: #007acc;
+  box-shadow: 0 0 0 2px rgba(0, 122, 204, 0.1);
+}
+
+.chat-input-textarea {
+  flex: 1;
+  border: none;
+  background: transparent;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  min-height: 20px;
+  max-height: 120px;
+  padding: 0.25rem 0;
+}
+
+.chat-input-textarea::placeholder {
+  color: #999;
+}
+
+.chat-input-textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.chat-input-send-button {
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  min-width: 36px;
+  height: 36px;
+}
+
+.chat-input-send-button:hover:not(:disabled) {
+  background-color: #005a9e;
+  transform: translateY(-1px);
+}
+
+.chat-input-send-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.chat-input-send-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.chat-input-hint {
+  font-size: 0.75rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .chat-input-form {
+    background-color: #1a1a1a;
+    border-top-color: #404040;
+  }
+
+  .chat-input-container {
+    background-color: #2d2d2d;
+    border-color: #404040;
+  }
+
+  .chat-input-container:focus-within {
+    border-color: #4a9eff;
+    box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.1);
+  }
+
+  .chat-input-textarea {
+    color: #e0e0e0;
+  }
+
+  .chat-input-textarea::placeholder {
+    color: #888;
+  }
+
+  .chat-input-send-button {
+    background-color: #4a9eff;
+  }
+
+  .chat-input-send-button:hover:not(:disabled) {
+    background-color: #357abd;
+  }
+
+  .chat-input-hint {
+    color: #aaa;
+  }
+}
