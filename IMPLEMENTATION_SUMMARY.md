@@ -27,8 +27,8 @@ All requirements have been successfully implemented and tested:
 
 3. **✅ Tauri Commands Implementation**
    - `initialize_llm`: Configure LLM service with custom settings
-   - `start_llm_service`: Start the LlamaEdge service
-   - `stop_llm_service`: Stop the LlamaEdge service
+   - `start_llm_service`: Start the local LLM service
+   - `stop_llm_service`: Stop the local LLM service
    - `get_llm_status`: Get current service status
    - `chat_with_llm`: Send chat messages and receive responses
    - `list_llm_models`: List available models
@@ -83,16 +83,16 @@ src/
 
 ### Communication Flow
 ```
-Frontend (React) → Tauri Commands → Rust Backend → HTTP API → LlamaEdge Service
+Frontend (React) → Tauri Commands → Rust Backend → llama-cpp-rs → Local LLM
 ```
 
 ## 🔧 Key Features Implemented
 
 ### LLM Service Management
-- **Service Lifecycle**: Start, stop, and monitor LlamaEdge service
+- **Service Lifecycle**: Start, stop, and monitor local LLM service
 - **Configuration**: Customizable model parameters and settings
 - **Health Monitoring**: Real-time service status and error reporting
-- **Process Management**: Automatic cleanup and resource management
+- **Memory Management**: Automatic cleanup and resource management
 
 ### Chat Interface
 - **Real-time Chat**: Instant messaging with local LLM
@@ -124,24 +124,24 @@ Frontend (React) → Tauri Commands → Rust Backend → HTTP API → LlamaEdge 
 
 ## 📋 Questions Answered
 
-### ✅ Is LlamaEdge compatible with Tauri's architecture?
-**Yes** - LlamaEdge runs perfectly as a managed subprocess within Tauri, communicating via OpenAI-compatible HTTP API.
+### ✅ Is llama-cpp-rs compatible with Tauri's architecture?
+**Yes** - llama-cpp-rs integrates perfectly as a native Rust library within Tauri, providing direct access to LLM functionality.
 
 ### ✅ What's the best way to manage the LLM service lifecycle within Tauri?
-**Subprocess Management** - Start LlamaEdge as a child process, monitor health via HTTP endpoints, and provide clean shutdown.
+**Native Integration** - Use llama-cpp-rs directly within Tauri commands for optimal performance and resource management.
 
 ### ✅ Which frontend library works best for the chat interface?
 **Custom React Implementation** - Built custom hooks and components for better integration with Tauri's invoke system.
 
 ### ✅ How should we structure the communication between frontend and the LLM service?
-**Tauri Commands → HTTP API** - Frontend calls Tauri commands, which make HTTP requests to the local LlamaEdge service.
+**Direct Tauri Commands** - Frontend calls Tauri commands, which directly invoke llama-cpp-rs for native performance.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js 18+
 - Rust (latest stable)
-- WasmEdge runtime
+- LIBCLANG_PATH environment variable (for llama-cpp-rs compilation)
 
 ### Quick Setup
 ```bash
@@ -178,6 +178,6 @@ Potential improvements for future development:
 
 ## 🎉 Conclusion
 
-The LlamaEdge LLM integration has been successfully completed with all requirements met. The implementation provides a robust, user-friendly local LLM chat interface that seamlessly integrates with the existing Tauri application without interfering with Bluetooth functionality.
+The local LLM integration using llama-cpp-rs has been successfully completed with all requirements met. The implementation provides a robust, user-friendly local LLM chat interface that seamlessly integrates with the existing Tauri application without interfering with Bluetooth functionality.
 
 The solution is production-ready, well-tested, and includes comprehensive documentation and setup tools for easy deployment and maintenance.
